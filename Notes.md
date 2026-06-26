@@ -53,3 +53,87 @@ def add(a:int,b:int):
 is a reducer provided by langraph which tells how to update the messages field in the state
 
 "Whenever a node return new msg, append them to the existing converstaion history"
+---
+
+## Annotated
+
+Annotated is type hint of Python to attach extra metadeta to a type
+
+```python
+from typing import Annotated
+```
+
+Basic syntax
+```python
+Annotated[actual_type,metadata]
+```
+
+Eg:-
+```python
+age:Annotated[int,"Age must be +ve"]
+```
+---
+## AnyMessage
+
+IT represents any kind of chat message
+
+instead of writing :
+```python
+list[HumanMessage | AIMessage | SystemMessage | ToolMessage]
+```
+
+we can write 
+```python
+list[AnyMessage]
+```
+---
+## Literal
+It is a typehint that tells Python "yhis value can be only be one of these specific values
+```python 
+from typing import Literal
+```
+
+--- 
+## Conditional Edges
+
+```python
+builder.add_conditional_edges(
+    source_node,
+    routing_function,
+    possible_destinations
+)
+```
+
+---
+
+# Visual Flow of Calculator AGent bu Graph API
+
+```mermaid
+flowchart TD
+
+    A[User Input] --> B["agent.invoke({'messages': [HumanMessage(...)]})"]
+
+    B --> C["Initial State
+
+    messages:
+    - HumanMessage('Add 3 and 4')
+    "]
+
+    C --> D([START])
+
+    D --> E[llm_call]
+
+    E --> F{Did LLM request any tools?}
+
+    F -- Yes --> G[tool_node]
+
+    G --> H[llm_call]
+
+    H --> F
+
+    F -- No --> I([END])
+```
+
+---
+
+
