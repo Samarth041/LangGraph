@@ -136,4 +136,42 @@ flowchart TD
 
 ---
 
+# .result()
+Suppose u have 
+```python
+@task
+def generate_joke(topic: str):
+    return "Funny joke"
+```
+
+originally 
+```python
+original_joke = generate_joke(topic)
+```
+
+ooriginal_joke does not contain:- *Funny Joke*
+
+Instead it contains a future like object (a placeholder for work that is being executed)
+
+```python
+original_joke = <Future pending>
+```
+
+the object says: the task has been scheduled . I will give u the actual result once it finishes
+
+thats why we call :
+```python
+original_joke = generate_joke(topic).result()
+```
+.result() means:-wait untill the task finishes and then give me its output
+
+
+So 
+```python 
+original_joke = generate_joke(topic).result()
+```
+becomes
+**original_joke=Funny joke**
+
+**Important Point**:- *In lanhgraph Functional API , a function decorated with @task always return a future like object not the actual result*
 
