@@ -29,6 +29,39 @@ def add(a:int,b:int):
     return a+b
 ```
 ---
+# Functional API code workflow
+```mermaid
+flowchart TD
+    A[Initialize LLMs / Tools / APIs]
+    B[Define Tasks using @task]
+    C[Orchestrate Tasks using @entrypoint]
+    D[Run Workflow using invoke/stream]
+
+    A --> B
+    B --> C
+    C --> D
+```
+---
+# Graph Api workflow
+
+```mermaid
+flowchart TD
+    A[Define State Schema]
+    B[Create Nodes]
+    C[Create Graph]
+    D[Add Nodes]
+    E[Add Edges]
+    F[Compile Graph]
+    G[Invoke or Stream]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+```
+---
 # Graph API vs Functional API in LangGraph
 
 | Feature | Graph API | Functional API |
@@ -175,3 +208,21 @@ becomes
 
 **Important Point**:- *In lanhgraph Functional API , a function decorated with @task always return a future like object not the actual result*
 
+---
+# Parallel Workflows
+
+```mermaid
+flowchart TD
+    A[Start]
+
+    A --> B[generate_joke]
+    A --> C[generate_poem]
+    A --> D[generate_fact]
+
+    B --> E[Combine Results]
+    C --> E
+    D --> E
+
+    E --> F[End]
+```
+---
