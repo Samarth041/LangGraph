@@ -4,3 +4,5 @@ test.py
 venv/
 chatbot/.ipynb_checkpoints/
 chatbot/__pycache__/
+
+__pycache__/
