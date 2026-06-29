@@ -2,3 +2,5 @@
 test.py
 .ipynb_checkpoints/
 venv/
+chatbot/.ipynb_checkpoints/
+chatbot/__pycache__/
