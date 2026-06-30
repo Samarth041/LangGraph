@@ -1,0 +1,7 @@
+streamlit
+langgraph
+langchain
+langchain-core
+langchain-huggingface
+langgraph-checkpoint-sqlite
+huggingface_hub
